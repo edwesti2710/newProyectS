@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SICSystem - Huancayo</title>
+</head>
+
+<body>
+    <!-- Aloha -->
+    <label for="alohaFile">Selecciona el archivo exportado de Aloha:</label>
+    <input type="file" id="aloha_file_upload" />
+    <br>
+    <!-- ControlNet -->
+    <label for="controlNetFile">Selecciona el archivo exportado de ControlNet:</label>
+    <input type="file" id="controlNet_file_upload" />
+    <br>
+    <button onclick="upload()">Cargar Archivos</button> 
+
+     <!-- Js dependencias -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
