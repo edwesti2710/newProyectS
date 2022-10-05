@@ -1,0 +1,40 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.graphs {
+    background-color: #0003;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    // gap: .5rem;
+    width: 50%;
+    z-index: -100;
+
+    .bar__container {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .3rem;
+        z-index: -80;
+        border-bottom: 1px solid #0002;
+
+        h3 {
+            color: #fff;
+            text-shadow: 1px 0px 3px #000;
+            font-size: 1.3rem;
+        }
+
+        .bar {
+            /* background-color: blue; */
+            z-index: -90;
+            position: absolute;
+            left: 0;
+            height: 100%;
+            padding: .5rem .5rem;
+        }
+    }
+}

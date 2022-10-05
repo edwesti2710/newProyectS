@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+body {
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+header .files {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+header .files .filesLoader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3rem;
+}
+header .operations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+header .operations button {
+  padding: 0.5rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graphs {
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 50%;
+  z-index: -100;
+}
+.graphs .bar__container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem;
+  z-index: -80;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1333333333);
+}
+.graphs .bar__container h3 {
+  color: #fff;
+  text-shadow: 1px 0px 3px #000;
+  font-size: 1.3rem;
+}
+.graphs .bar__container .bar {
+  /* background-color: blue; */
+  z-index: -90;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  padding: 0.5rem 0.5rem;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -5,23 +5,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles/index.css">
     <title>SICSystem - Huancayo</title>
 </head>
 
 <body>
-    <!-- Aloha -->
-    <label for="alohaFile">Selecciona el archivo exportado de Aloha:</label>
-    <input type="file" id="aloha_file_upload" />
-    <br>
-    <!-- ControlNet -->
-    <label for="controlNetFile">Selecciona el archivo exportado de ControlNet:</label>
-    <input type="file" id="controlNet_file_upload" />
-    <br>
-    <button onclick="upload()">Cargar Archivos</button> 
+    <header>
+        <div class="files">
+            <form class="filesLoader">
+                <div class="aloha">
+                    <!-- Aloha -->
+                    <label for="alohaFile">Aloha:<input type="file" id="aloha_file_upload" /></label>
+                </div>
+                <div class="controlNetMoviles">
+                    <!-- ControlNet Movil -->
+                    <label for="controlNetMovilFile">ControlNet (Moviles):<input type="file" name="controlNetMovilFile"
+                            id="controlNetMovil_file_upload" /></label>
+                </div>
+                <div class="controlNetFija">
+                    <!-- ControlNet Fija -->
+                    <label for="controlNetFijaFile">ControlNet (Fija):<input type="file" name="controlNetFijaFile"
+                            id="controlNetFija_file_upload" /></label>
+                </div>
+            </form>
+            <button onclick="upload()">Cargar Archivos</button>
+        </div>
+        <div class="generalOperations">
+            <button class="buttonGeneralOperations" onclick="filterVentas('m')">Ventas Móviles</button>
+            <button class="buttonGeneralOperations" onclick="filterVentas('f')">Ventas Fijas</button>
+        </div>
+        <div class="operations">
 
-     <!-- Js dependencias -->
+        </div>
+    </header>
+    <main>
+        <data class="titleText">
+            <h2></h2>
+            <h3></h3>
+        </data>
+        <div class="graphs hidden">
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+
+    <!-- Js dependencias -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="./assets/js/index.js"></script>
 </body>
 
 </html>
