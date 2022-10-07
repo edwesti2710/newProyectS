@@ -60,11 +60,11 @@ function upload() {
                 operaciones.push(elemento['Tipo Operacion']);
             })
             operaciones = [...new Set(operaciones)];
-            operaciones.sort()
+            // operaciones.sort()
 
 
             // Normalizar ArrayFija
-            controlNetFijaArray.forEach(elemento =>{
+            controlNetFijaArray.forEach(elemento => {
                 elemento['Operaci&#243;n'] = elemento['Tipo Operacion'];
                 elemento['C&#243;digo FFVV'] = elemento['CodigoFFVV'];
             })
@@ -94,15 +94,15 @@ function upload() {
                     operaciones[operacion] = controlNetArray.filter(obj => obj['Operaci&#243;n'] == operacion && obj['C&#243;digo FFVV'] == asesor.id);
                     asesor.operaciones[operacion] = operaciones[operacion].reduce((cnt, cur) => (cnt[cur['C&#243;digo FFVV']] = cnt[cur['C&#243;digo FFVV']] + 1 || 1, cnt), {})[asesor.id] || 0;
                 })
-                let operacionesSumatorias = ['Postpago Renueva por Fidelizaci&#243;n', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', 'Telefon&#237;a Fija', 'Post-Venta', 'Postpago Migracion M4', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Prepago)', 'Postpago Portabilidad ( Origen Postpago )', 'Postpago Portabilidad ( Origen Prepago )', 'Migracion de Prepago a Postpago'];
+                let operacionesSumatorias = ['Postpago Renueva por Fidelizaci&#243;n', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', 'Telefon&#237;a Fija', 'Postpago Migracion M4', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Prepago)', 'Postpago Portabilidad ( Origen Postpago )', 'Postpago Portabilidad ( Origen Prepago )', 'Migracion de Prepago a Postpago'];
                 let sumatoria = 0;
-                operacionesSumatorias.forEach( operacion =>{
+                operacionesSumatorias.forEach(operacion => {
                     sumatoria += asesor.operaciones[operacion] || 0;
                 })
                 asesor.movilesTotales = sumatoria;
                 operacionesSumatorias = ['NAKED ', 'DUO BA', 'DUO BA+TV', 'TRIO'];
                 sumatoria = 0;
-                operacionesSumatorias.forEach( operacion =>{
+                operacionesSumatorias.forEach(operacion => {
                     sumatoria += asesor.operaciones[operacion] || 0;
                 })
                 asesor.fijasTotales = sumatoria;
@@ -224,7 +224,7 @@ function filterOperations(filter) {
     graphHtml += `<div class="item">
     <div class="bar__container">
         <h3 class="h3">TOTAL</h3>
-        <h3>${asesores.reduce((obj1,obj2)=>obj1 + obj2.operaciones[filter], 0)}</h3>
+        <h3>${asesores.reduce((obj1, obj2) => obj1 + obj2.operaciones[filter], 0)}</h3>
         <div class="bar" style="width: 100%; background-color: #000;">
         </div>
     </div>
@@ -235,22 +235,48 @@ function filterOperations(filter) {
 }
 
 function filterVentas(type) {
-    if (type === 'm'){
-        filter = 'movilesTotales';
-    } else if (type === 'f'){
-        filter = 'fijasTotales';
-    }
-
     let graphHtml = '';
-    asesores.sort((a, b) => (b[filter] > a[filter]) ? 1 : ((a[filter] > b[filter]) ? -1 : 0))
-    let paletaColores = asesores.map(obj => obj[filter]);
-    paletaColores = [...new Set(paletaColores)];
-    let graph100percent = asesores[0][filter];
-    console.log(asesores, graph100percent);
-    asesores.forEach((asesor) => {
-        efectivePercent = Math.round((asesor[filter] * 100) / graph100percent);
-        console.log(efectivePercent);
-        graphHtml += `<div class="item">
+    if (type === 'm') {
+        filter = 'movilesTotales';
+        drawObjectsFromFilter()
+    } else if (type === 'f') {
+        filter = 'fijasTotales';
+        drawObjectsFromFilter()
+    } else if (type === undefined) {
+        graphHtml += `<table border="2" style="text-align: center;">
+        <tr>
+            <td colspan=1></td>
+            <td colspan=24>Ventas Totales</td>
+        </tr>
+        <tr>
+            <!-- this cell will occupy 3 columns -->
+            <td colspan=1></td>
+            <td colspan=20>Móviles</td>
+            <td colspan=4>Fija</td>
+        </tr><tr><th>Nombre</th>`
+
+        operaciones.forEach(operacion => {
+            graphHtml += `<th>${operacion}</th>`
+        })
+
+        graphHtml += `</td>`
+
+        asesores.forEach(asesor => {
+            graphHtml += `<tr><td><div class="tableHeader"></div>${asesor.nombre}</td>`;
+            operaciones.forEach(operacion => {
+                graphHtml += `<td>${asesor.operaciones[operacion] || 0}</td>`
+            })
+            graphHtml += `<tr>`
+        })
+    }
+    function drawObjectsFromFilter() {
+        asesores.sort((a, b) => (b[filter] > a[filter]) ? 1 : ((a[filter] > b[filter]) ? -1 : 0))
+        let paletaColores = asesores.map(obj => obj[filter]);
+        paletaColores = [...new Set(paletaColores)];
+        let graph100percent = asesores[0][filter];
+        asesores.forEach((asesor) => {
+            efectivePercent = Math.round((asesor[filter] * 100) / graph100percent);
+            graphHtml += `<div class="item">
     <div class="bar__container">
         <h3 class="h3">${asesor.nombre}</h3>
         <h3>${asesor[filter]}</h3>
@@ -259,16 +285,17 @@ function filterVentas(type) {
     </div>
 </div>
 `;
-    });
-    graphHtml += `<div class="item">
+        });
+        graphHtml += `<div class="item">
     <div class="bar__container">
         <h3 class="h3">TOTAL</h3>
-        <h3>${asesores.reduce((obj1,obj2)=>obj1 + obj2[filter], 0)}</h3>
+        <h3>${asesores.reduce((obj1, obj2) => obj1 + obj2[filter], 0)}</h3>
         <div class="bar" style="width: 100%; background-color: #000;">
         </div>
     </div>
 </div>
 `;
+    }
     document.querySelector('.graphs').innerHTML = graphHtml;
     document.querySelector('.graphs').classList.remove('hidden');
 }
