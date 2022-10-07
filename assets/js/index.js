@@ -82,6 +82,7 @@ function upload() {
             })
             // console.log(operaciones);
             document.querySelector('.operations').innerHTML = operationsHtml;
+            
             // ------------------------------------------------------
 
             // Filtrando asesores y contando cantidad de operaciones;
@@ -106,6 +107,7 @@ function upload() {
                     sumatoria += asesor.operaciones[operacion] || 0;
                 })
                 asesor.fijasTotales = sumatoria;
+                // filterVentas();
             });
         }, 500)
     } else {
@@ -243,26 +245,26 @@ function filterVentas(type) {
         filter = 'fijasTotales';
         drawObjectsFromFilter()
     } else if (type === undefined) {
-        graphHtml += `<table border="2" style="text-align: center;">
+        graphHtml += `<table style="text-align: center;">
         <tr>
-            <td colspan=1></td>
-            <td colspan=24>Ventas Totales</td>
+            <th class="col" colspan=1></th>
+            <th class="col" colspan=24>Ventas Totales</th>
         </tr>
         <tr>
             <!-- this cell will occupy 3 columns -->
-            <td colspan=1></td>
-            <td colspan=20>Móviles</td>
-            <td colspan=4>Fija</td>
-        </tr><tr><th>Nombre</th>`
+            <th class="col" colspan=1>Asesor</th>
+            <th class="col" colspan=20>Móviles</th>
+            <th class="col" colspan=4>Fija</th>
+        </tr><tr><th class="col">Nombre</th>`
 
         operaciones.forEach(operacion => {
-            graphHtml += `<th>${operacion}</th>`
+            graphHtml += `<th class="col">${operacion}</th>`
         })
 
         graphHtml += `</td>`
 
         asesores.forEach(asesor => {
-            graphHtml += `<tr><td><div class="tableHeader"></div>${asesor.nombre}</td>`;
+            graphHtml += `<tr><th class="row"><div class=""></div>${asesor.nombre}</th>`;
             operaciones.forEach(operacion => {
                 graphHtml += `<td>${asesor.operaciones[operacion] || 0}</td>`
             })
@@ -299,3 +301,14 @@ function filterVentas(type) {
     document.querySelector('.graphs').innerHTML = graphHtml;
     document.querySelector('.graphs').classList.remove('hidden');
 }
+
+if (screen.width < 500) {
+  
+    $("body").addClass("nohover");
+    $("td, th")
+      .attr("tabindex", "1")
+      .on("touchstart", function() {
+        $(this).focus();
+      });
+    
+  }
