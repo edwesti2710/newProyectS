@@ -5,7 +5,32 @@ let controlNetArray;
 let movilesContables;
 
 let asesores = [];
-let operaciones = [];
+let operaciones = [
+    { id: 1, nombreLargo: 'Prepago CASI', nombreCorto: 'CASI Pre', tipo: 'movil' },
+    { id: 2, nombreLargo: 'Postpago Renueva por Fidelizaci&#243;n', nombreCorto: 'CAEQ' },
+    { id: 3, nombreLargo: 'Postpago CASI', nombreCorto: 'CASI Post' },
+    { id: 4, nombreLargo: 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', nombreCorto: 'Porta M4 - Post' },
+    { id: 5, nombreLargo: 'Registro SAR', nombreCorto: 'SAR' },
+    { id: 6, nombreLargo: 'Telefon&#237;a Fija', nombreCorto: 'Fija' },
+    { id: 7, nombreLargo: 'Post-Venta', nombreCorto: 'Post-Venta' },
+    { id: 8, nombreLargo: 'Reclamo', nombreCorto: 'Reclamo' },
+    { id: 9, nombreLargo: 'Postpago Migracion M4', nombreCorto: 'Mig M4' },
+    { id: 10, nombreLargo: 'Postpago Portabilidad Migraci&#243;n M4 (Or. Prepago)', nombreCorto: 'Mig M4 - Pre' },
+    { id: 11, nombreLargo: 'CAPL', nombreCorto: 'CAPL' },
+    { id: 12, nombreLargo: 'Postpago Portabilidad ( Origen Postpago )', nombreCorto: 'Porta Post' },
+    { id: 13, nombreLargo: 'Detalle de llamadas', nombreCorto: 'Detalle' },
+    { id: 14, nombreLargo: 'Postpago Portabilidad ( Origen Prepago )', nombreCorto: 'Porta Pre' },
+    { id: 15, nombreLargo: 'Prepago Migracion M7', nombreCorto: 'Prepago M7' },
+    { id: 16, nombreLargo: 'Migracion de Prepago a Postpago', nombreCorto: 'Pre a Post' },
+    { id: 17, nombreLargo: 'Cesion de Linea', nombreCorto: 'Cesion de Linea' },
+    { id: 18, nombreLargo: 'Retiro de Bandit', nombreCorto: 'Retiro de Bandit' },
+    { id: 19, nombreLargo: 'DOA', nombreCorto: 'DOA' },
+    { id: 20, nombreLargo: 'Prepago Renueva', nombreCorto: 'CAEQ Pre' },
+    { id: 21, nombreLargo: 'NAKED ', nombreCorto: 'NAKED' },
+    { id: 22, nombreLargo: 'DUO BA', nombreCorto: 'DUO BA' },
+    { id: 23, nombreLargo: 'DUO BA+TV', nombreCorto: 'DUO BA+TV' },
+    { id: 24, nombreLargo: 'TRIO', nombreCorto: 'TRIO' },
+];
 
 let oportunidadesTotales;
 let oportunidadesEfectivas;
@@ -28,7 +53,10 @@ function upload() {
         excelAlohaFileToJSON(alohaFile[0]);
         excelControlNetMovilFileToJSON(controlNetMovilFile[0]);
         excelControlNetFijaFileToJSON(controlNetFijaFile[0]);
+
         document.querySelector('.files').classList.add('hidden');
+        document.querySelector('.generalOperations').classList.remove('hidden');
+
         setTimeout(function () {
             // Cantidad de Oportunidades por Asesor
             // Oportunidades Totales
@@ -53,13 +81,13 @@ function upload() {
                 })
 
             // Operaciones
-            controlNetMovilArray.forEach(elemento => {
-                operaciones.push(elemento['Operaci&#243;n']);
-            })
-            controlNetFijaArray.forEach(elemento => {
-                operaciones.push(elemento['Tipo Operacion']);
-            })
-            operaciones = [...new Set(operaciones)];
+            // controlNetMovilArray.forEach(elemento => {
+            //     operaciones.push(elemento['Operaci&#243;n']);
+            // })
+            // controlNetFijaArray.forEach(elemento => {
+            //     operaciones.push(elemento['Tipo Operacion']);
+            // })
+            // operaciones = [...new Set(operaciones)];
             // operaciones.sort()
 
 
@@ -73,16 +101,17 @@ function upload() {
 
             // ------------------------Cambiando Errores Ortográficos
             n = 0;
-            operationsHtml = '';
+            let filterOpHtml = '';
+
             operaciones.forEach(operacion => {
-                let operacionName = operacion.replace('&#243;', 'ó')
-                operacionName = operacionName.replace('&#237;', 'í')
-                operationsHtml += `<button class="buttonOperation" onclick="filterOperations('${n}')">${operacionName}</button>`;
+                // operationsHtml += `<button class="buttonOperation" onclick="filterOperations('${n}')">${operacionName}</button>`;
+                filterOpHtml += `<label for="${operacion.nombreLargo}"><input id="${operacion.nombreLargo}" type="checkbox" value="${operacion.id}" checked/><a class="aButton" href="#" onclick="filterOperations('${n}')">${operacion.nombreCorto}</a></label>`;
                 n++;
             })
             // console.log(operaciones);
-            document.querySelector('.operations').innerHTML = operationsHtml;
-            
+            document.querySelector('.options').innerHTML = filterOpHtml;
+            // document.querySelector('.operations').innerHTML = operationsHtml;
+
             // ------------------------------------------------------
 
             // Filtrando asesores y contando cantidad de operaciones;
@@ -92,8 +121,8 @@ function upload() {
                 asesor.ventasTotales = ventasTotales[asesor.id];
                 asesor.operaciones = {};
                 operaciones.forEach(operacion => {
-                    operaciones[operacion] = controlNetArray.filter(obj => obj['Operaci&#243;n'] == operacion && obj['C&#243;digo FFVV'] == asesor.id);
-                    asesor.operaciones[operacion] = operaciones[operacion].reduce((cnt, cur) => (cnt[cur['C&#243;digo FFVV']] = cnt[cur['C&#243;digo FFVV']] + 1 || 1, cnt), {})[asesor.id] || 0;
+                    operaciones[operacion.nombreLargo] = controlNetArray.filter(obj => obj['Operaci&#243;n'] == operacion.nombreLargo && obj['C&#243;digo FFVV'] == asesor.id);
+                    asesor.operaciones[operacion.nombreLargo] = operaciones[operacion.nombreLargo].reduce((cnt, cur) => (cnt[cur['C&#243;digo FFVV']] = cnt[cur['C&#243;digo FFVV']] + 1 || 1, cnt), {})[asesor.id] || 0;
                 })
                 let operacionesSumatorias = ['Postpago Renueva por Fidelizaci&#243;n', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', 'Telefon&#237;a Fija', 'Postpago Migracion M4', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Prepago)', 'Postpago Portabilidad ( Origen Postpago )', 'Postpago Portabilidad ( Origen Prepago )', 'Migracion de Prepago a Postpago'];
                 let sumatoria = 0;
@@ -204,7 +233,8 @@ function perc2color(perc) {
 
 // Funcion de filtro
 function filterOperations(filter) {
-    filter = operaciones[filter];
+    filter = operaciones[filter].nombreLargo;
+    console.log(filter)
     let graphHtml = '';
     asesores.sort((a, b) => (b.operaciones[filter] > a.operaciones[filter]) ? 1 : ((a.operaciones[filter] > b.operaciones[filter]) ? -1 : 0))
     let paletaColores = asesores.map(obj => obj.operaciones[filter]);
@@ -236,45 +266,58 @@ function filterOperations(filter) {
     document.querySelector('.graphs').classList.remove('hidden');
 }
 
-function filterVentas(type) {
+function filterVentas(type, filtered) {
+    document.querySelector('.filter').classList.add('hidden');
     let graphHtml = '';
     if (type === 'm') {
         filter = 'movilesTotales';
-        drawObjectsFromFilter()
+        drawObjectsFromFilter('m')
     } else if (type === 'f') {
         filter = 'fijasTotales';
-        drawObjectsFromFilter()
-    } else if (type === undefined) {
+        drawObjectsFromFilter('f')
+    } else if (type === 'a') {
+    document.querySelector('.filter').classList.remove('hidden');
+        let operacionesFiltradas = [];
+        if (filtered === true) {
+            let filterOptions = document.querySelector('.options');
+            let optCheckeds = filterOptions.getElementsByTagName('input');
+            for (let i = 0; i < optCheckeds.length; i++) {
+                if (optCheckeds[i].checked) {
+                    operacionesFiltradas.push(operaciones[optCheckeds[i].value-1]);
+                }
+            }
+        } else {
+            operacionesFiltradas = operaciones;
+        }
+        console.log(operacionesFiltradas);
         graphHtml += `<table style="text-align: center;">
+        <thead>
         <tr>
             <th class="col" colspan=1></th>
-            <th class="col" colspan=24>Ventas Totales</th>
+            <th class="col" colspan=${operacionesFiltradas.length}>Ventas Totales</th>
         </tr>
-        <tr>
-            <!-- this cell will occupy 3 columns -->
-            <th class="col" colspan=1>Asesor</th>
-            <th class="col" colspan=20>Móviles</th>
-            <th class="col" colspan=4>Fija</th>
-        </tr><tr><th class="col">Nombre</th>`
-
-        operaciones.forEach(operacion => {
-            graphHtml += `<th class="col">${operacion}</th>`
+        <tr class="opHeader"><th class="col">Nombre</th>`
+        operacionesFiltradas.forEach(operacion => {
+            graphHtml += `<th class="col">${operacion.nombreCorto}</th>`
         })
-
-        graphHtml += `</td>`
-
-        asesores.forEach(asesor => {
-            graphHtml += `<tr><th class="row"><div class=""></div>${asesor.nombre}</th>`;
-            operaciones.forEach(operacion => {
-                graphHtml += `<td>${asesor.operaciones[operacion] || 0}</td>`
+        graphHtml += `</tr></thead><tbody>`
+        getOptionsFiltered(operacionesFiltradas)
+        function getOptionsFiltered(listOperations) {
+            asesores.forEach(asesor => {
+                graphHtml += `<tr><th class="row"><div class=""></div>${asesor.nombre}</th>`;
+                listOperations.forEach(operacion => {
+                    graphHtml += `<td>${asesor.operaciones[operacion.nombreLargo] || 0}</td>`
+                })
+                return graphHtml += `<tr></tbody>`
             })
-            graphHtml += `<tr>`
-        })
+        }
     }
-    function drawObjectsFromFilter() {
+    function drawObjectsFromFilter(data) {
+        data == 'm' ? (data = 'Ventas Móviles') : (data = 'Ventas Fijas');
         asesores.sort((a, b) => (b[filter] > a[filter]) ? 1 : ((a[filter] > b[filter]) ? -1 : 0))
         let paletaColores = asesores.map(obj => obj[filter]);
         paletaColores = [...new Set(paletaColores)];
+        graphHtml += `<h2 style="text-align: center;">${data}</h2>`
         let graph100percent = asesores[0][filter];
         asesores.forEach((asesor) => {
             efectivePercent = Math.round((asesor[filter] * 100) / graph100percent);
@@ -301,14 +344,3 @@ function filterVentas(type) {
     document.querySelector('.graphs').innerHTML = graphHtml;
     document.querySelector('.graphs').classList.remove('hidden');
 }
-
-if (screen.width < 500) {
-  
-    $("body").addClass("nohover");
-    $("td, th")
-      .attr("tabindex", "1")
-      .on("touchstart", function() {
-        $(this).focus();
-      });
-    
-  }

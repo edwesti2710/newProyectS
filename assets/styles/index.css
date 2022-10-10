@@ -30,8 +30,8 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
   padding: 1rem;
+  background: #ccc;
 }
 header .files {
   display: flex;
@@ -58,15 +58,39 @@ header .operations button {
 
 main {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  grid-template-columns: 3fr 21fr;
+  grid-template-areas: "FILTER DATA";
+}
+
+.filter {
+  grid-area: FILTER;
+  width: 9%;
+  background: #ccc;
+  font-size: 1rem;
+  height: 100%;
+}
+.filter .options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 86vh;
+  padding: 0.5rem;
+}
+.filter .options a {
+  text-decoration: none;
+  padding: 0.5rem;
+}
+.filter .filterButton {
+  width: 100%;
+  cursor: pointer;
 }
 
 .graphs {
-  background-color: rgba(0, 0, 0, 0.2);
+  grid-area: DATA;
+  width: 91%;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
 }
 .graphs .bar__container {
   position: relative;
@@ -75,12 +99,13 @@ main {
   align-items: center;
   padding: 0.3rem;
   z-index: -80;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1333333333);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0666666667);
 }
 .graphs .bar__container h3 {
   color: #fff;
   text-shadow: 1px 0px 3px #000;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  margin: 0 1rem;
 }
 .graphs .bar__container .bar {
   /* background-color: blue; */
@@ -92,54 +117,61 @@ main {
 }
 
 table {
-  overflow: hidden;
-  max-width: 90vw;
-  min-width: 50vw;
+  border: 1px solid #000;
+  overflow: auto;
+  width: 100%;
+  height: 100px;
+  border-collapse: collapse;
+  font-size: 1rem;
 }
-
-td, th {
-  padding: 10px;
+table th {
+  background: #ccc;
+}
+table td {
+  border: 1px solid rgba(0, 0, 0, 0.1333333333);
+}
+table td,
+table th {
+  padding: 0.5rem;
   position: relative;
   outline: 0;
+  font-weight: 600;
 }
-
-body:not(.nohover) tbody tr:hover {
-  background-color: #ffa;
+table td:hover::after,
+table th:hover::after {
+  background-color: #ccc;
 }
-
-td:hover::after,
-thead th:not(:empty):hover::after,
-td:focus::after,
-thead th:not(:empty):focus::after {
+table thead {
+  overflow: hidden;
+}
+table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-weight: 600;
+}
+table tbody tr {
+  overflow: hidden;
+  white-space: nowrap;
+}
+table tbody tr:hover {
+  background-color: #ccc;
+}
+table tbody td {
+  font-size: 1rem;
+}
+table tbody tbody th {
+  text-overflow: ellipsis;
+}
+table td:hover::after,
+table td:focus::after,
+table thead th:not(:empty):focus::after {
   content: "";
   height: 10000px;
   left: 0;
   position: absolute;
   top: -5000px;
   width: 100%;
-  z-index: -1;
-}
-
-td:hover::after,
-th:hover::after {
-  background-color: #ffa;
-}
-
-td:focus::after,
-th:focus::after {
-  background-color: lightblue;
-}
-
-/* Focus stuff for mobile */
-td:focus::before,
-tbody th:focus::before {
-  background-color: lightblue;
-  content: "";
-  height: 100%;
-  top: 0;
-  left: -5000px;
-  position: absolute;
-  width: 10000px;
   z-index: -1;
 }
 

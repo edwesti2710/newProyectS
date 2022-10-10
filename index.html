@@ -2,108 +2,64 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/styles/index.css">
-    <title>SICSystem - Huancayo</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/styles/index.css">
+  <title>SICSystem - Huancayo</title>
 </head>
 
 <body>
-    <header>
-        <div class="files">
-            <form class="filesLoader">
-                <div class="aloha">
-                    <!-- Aloha -->
-                    <label for="alohaFile">Aloha:<input type="file" id="aloha_file_upload" /></label>
-                </div>
-                <div class="controlNetMoviles">
-                    <!-- ControlNet Movil -->
-                    <label for="controlNetMovilFile">ControlNet (Moviles):<input type="file" name="controlNetMovilFile"
-                            id="controlNetMovil_file_upload" /></label>
-                </div>
-                <div class="controlNetFija">
-                    <!-- ControlNet Fija -->
-                    <label for="controlNetFijaFile">ControlNet (Fija):<input type="file" name="controlNetFijaFile"
-                            id="controlNetFija_file_upload" /></label>
-                </div>
-            </form>
-            <button onclick="upload()">Cargar Archivos</button>
+  <header>
+    <div class="files">
+      <form class="filesLoader">
+        <div class="aloha">
+          <!-- Aloha -->
+          <label for="alohaFile">Aloha:<input type="file" id="aloha_file_upload" /></label>
         </div>
-        <div class="generalOperations">
-            <button class="buttonGeneralOperations" onclick="filterVentas()">Detallado Ventas</button>
-            <button class="buttonGeneralOperations" onclick="filterVentas('m')">Ventas Móviles</button>
-            <button class="buttonGeneralOperations" onclick="filterVentas('f')">Ventas Fijas</button>
+        <div class="controlNetMoviles">
+          <!-- ControlNet Movil -->
+          <label for="controlNetMovilFile">ControlNet (Moviles):<input type="file" name="controlNetMovilFile"
+              id="controlNetMovil_file_upload" /></label>
         </div>
-        <div class="operations">
+        <div class="controlNetFija">
+          <!-- ControlNet Fija -->
+          <label for="controlNetFijaFile">ControlNet (Fija):<input type="file" name="controlNetFijaFile"
+              id="controlNetFija_file_upload" /></label>
+        </div>
+      </form>
+      <button onclick="upload()">Cargar Archivos</button>
+    </div>
+    <div class="generalOperations hidden">
+      <button class="buttonGeneralOperations" onclick="filterVentas('a', false)">Detallado Ventas</button>
+      <button class="buttonGeneralOperations" onclick="filterVentas('m', false)">Ventas Móviles</button>
+      <button class="buttonGeneralOperations" onclick="filterVentas('f', false)">Ventas Fijas</button>
 
-        </div>
-    </header>
-    <main>
-        <!-- <data class="titleText">
-            <h2></h2>
-            <h3></h3>
-        </data> -->
-        <div class="graphs hidden">
-            <!-- <table>
-                <caption>Title</caption>
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th class="col">50kg</th>
-                    <th class="col">55kg</th>
-                    <th class="col">60kg</th>
-                    <th class="col">65kg</th>
-                    <th class="col">70kg</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th class="row">160cm</th>
-                    <td>20</td>
-                    <td>21</td>
-                    <td>23</td>
-                    <td>25</td>
-                    <td>27</td>
-                  </tr>
-            
-                  <tr>
-                    <th class="row">165cm</th>
-                    <td>18</td>
-                    <td>20</td>
-                    <td>22</td>
-                    <td>24</td>
-                    <td>26</td>
-                  </tr>
-            
-                  <tr>
-                    <th class="row">170cm</th>
-                    <td>17</td>
-                    <td>19</td>
-                    <td>21</td>
-                    <td>23</td>
-                    <td>25</td>
-                  </tr>
-            
-                  <tr>
-                    <th class="row">175cm</th>
-                    <td>16</td>
-                    <td>18</td>
-                    <td>20</td>
-                    <td>22</td>
-                    <td>24</td>
-                  </tr>
-                <tbody>
-              </table> -->
-        </div>
-    </main>
-    <footer>
+    </div>
+    <div class="operations">
 
-    </footer>
+    </div>
+  </header>
+  <main>
+    <form class="filter hidden" action="">
+      <div class="options">
+        <!-- <label for="filterOp"><input id="filterOp" type="checkbox" value="1" />Operacion</label>
+      <input id="filterOp2" type="checkbox" value="1" /><label for="filterOp2">Operacion</label>
+      <input id="filterOp3" type="checkbox" value="1" /><label for="filterOp3">Operacion</label> -->
+      </div>
+      <button class="filterButton" onclick="filterVentas('a',true)">Filtrar</button>
+    </form>
 
-    <!-- Js dependencias -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.min.js"></script>
-    <script src="./assets/js/index.js"></script>
+    <div class="graphs hidden">
+    </div>
+  </main>
+  <footer>
+
+  </footer>
+
+  <!-- Js dependencias -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.min.js"></script>
+  <script src="./assets/js/index.js"></script>
 </body>
 
 </html>
