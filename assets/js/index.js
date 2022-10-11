@@ -9,7 +9,7 @@ let operaciones = [
     { id: 1, nombreLargo: 'Prepago CASI', nombreCorto: 'CASI Pre', tipo: 'movil' },
     { id: 2, nombreLargo: 'Postpago Renueva por Fidelizaci&#243;n', nombreCorto: 'CAEQ' },
     { id: 3, nombreLargo: 'Postpago CASI', nombreCorto: 'CASI Post' },
-    { id: 4, nombreLargo: 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', nombreCorto: 'Porta M4 - Post' },
+    { id: 4, nombreLargo: 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', nombreCorto: 'Porta M4 Post - Post' },
     { id: 5, nombreLargo: 'Registro SAR', nombreCorto: 'SAR' },
     { id: 6, nombreLargo: 'Telefon&#237;a Fija', nombreCorto: 'Fija' },
     { id: 7, nombreLargo: 'Post-Venta', nombreCorto: 'Post-Venta' },
@@ -31,6 +31,8 @@ let operaciones = [
     { id: 23, nombreLargo: 'DUO BA+TV', nombreCorto: 'DUO BA+TV' },
     { id: 24, nombreLargo: 'TRIO', nombreCorto: 'TRIO' },
 ];
+
+let operacionesSumatorias = ['Postpago Renueva por Fidelizaci&#243;n', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', 'Postpago Migracion M4', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Prepago)', 'Postpago Portabilidad ( Origen Postpago )', 'Migracion de Prepago a Postpago'];
 
 let oportunidadesTotales;
 let oportunidadesEfectivas;
@@ -124,7 +126,6 @@ function upload() {
                     operaciones[operacion.nombreLargo] = controlNetArray.filter(obj => obj['Operaci&#243;n'] == operacion.nombreLargo && obj['C&#243;digo FFVV'] == asesor.id);
                     asesor.operaciones[operacion.nombreLargo] = operaciones[operacion.nombreLargo].reduce((cnt, cur) => (cnt[cur['C&#243;digo FFVV']] = cnt[cur['C&#243;digo FFVV']] + 1 || 1, cnt), {})[asesor.id] || 0;
                 })
-                let operacionesSumatorias = ['Postpago Renueva por Fidelizaci&#243;n', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', 'Telefon&#237;a Fija', 'Postpago Migracion M4', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Prepago)', 'Postpago Portabilidad ( Origen Postpago )', 'Postpago Portabilidad ( Origen Prepago )', 'Migracion de Prepago a Postpago'];
                 let sumatoria = 0;
                 operacionesSumatorias.forEach(operacion => {
                     sumatoria += asesor.operaciones[operacion] || 0;
@@ -265,6 +266,11 @@ function filterOperations(filter) {
     document.querySelector('.graphs').innerHTML = graphHtml;
     document.querySelector('.graphs').classList.remove('hidden');
 }
+
+document.querySelector(".filterButton").addEventListener("click", function(event){
+    event.preventDefault();
+    filterVentas('a',true)
+  });
 
 function filterVentas(type, filtered) {
     document.querySelector('.filter').classList.add('hidden');
