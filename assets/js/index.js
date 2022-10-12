@@ -7,32 +7,32 @@ let movilesContables;
 let asesores = [];
 let operaciones = [
     { id: 1, nombreLargo: 'Prepago CASI', nombreCorto: 'CASI Pre', tipo: 'movil' },
-    { id: 2, nombreLargo: 'Postpago Renueva por Fidelizaci&#243;n', nombreCorto: 'CAEQ' },
-    { id: 3, nombreLargo: 'Postpago CASI', nombreCorto: 'CASI Post' },
-    { id: 4, nombreLargo: 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', nombreCorto: 'Porta M4 Post - Post' },
-    { id: 5, nombreLargo: 'Registro SAR', nombreCorto: 'SAR' },
-    { id: 6, nombreLargo: 'Telefon&#237;a Fija', nombreCorto: 'Fija' },
-    { id: 7, nombreLargo: 'Post-Venta', nombreCorto: 'Post-Venta' },
-    { id: 8, nombreLargo: 'Reclamo', nombreCorto: 'Reclamo' },
-    { id: 9, nombreLargo: 'Postpago Migracion M4', nombreCorto: 'Mig M4' },
-    { id: 10, nombreLargo: 'Postpago Portabilidad Migraci&#243;n M4 (Or. Prepago)', nombreCorto: 'Mig M4 - Pre' },
-    { id: 11, nombreLargo: 'CAPL', nombreCorto: 'CAPL' },
-    { id: 12, nombreLargo: 'Postpago Portabilidad ( Origen Postpago )', nombreCorto: 'Porta Post' },
-    { id: 13, nombreLargo: 'Detalle de llamadas', nombreCorto: 'Detalle' },
-    { id: 14, nombreLargo: 'Postpago Portabilidad ( Origen Prepago )', nombreCorto: 'Porta Pre' },
-    { id: 15, nombreLargo: 'Prepago Migracion M7', nombreCorto: 'Prepago M7' },
-    { id: 16, nombreLargo: 'Migracion de Prepago a Postpago', nombreCorto: 'Pre a Post' },
-    { id: 17, nombreLargo: 'Cesion de Linea', nombreCorto: 'Cesion de Linea' },
-    { id: 18, nombreLargo: 'Retiro de Bandit', nombreCorto: 'Retiro de Bandit' },
-    { id: 19, nombreLargo: 'DOA', nombreCorto: 'DOA' },
-    { id: 20, nombreLargo: 'Prepago Renueva', nombreCorto: 'CAEQ Pre' },
-    { id: 21, nombreLargo: 'NAKED ', nombreCorto: 'NAKED' },
-    { id: 22, nombreLargo: 'DUO BA', nombreCorto: 'DUO BA' },
-    { id: 23, nombreLargo: 'DUO BA+TV', nombreCorto: 'DUO BA+TV' },
-    { id: 24, nombreLargo: 'TRIO', nombreCorto: 'TRIO' },
+    { id: 2, nombreLargo: 'Postpago Renueva por Fidelizaci&#243;n', nombreCorto: 'CAEQ', tipo: 'movil' },
+    { id: 3, nombreLargo: 'Postpago CASI', nombreCorto: 'CASI Post', tipo: 'movil' },
+    { id: 4, nombreLargo: 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', nombreCorto: 'Porta M4 Post - Post', tipo: 'movil' },
+    { id: 5, nombreLargo: 'Registro SAR', nombreCorto: 'SAR', tipo: 'movil' },
+    { id: 6, nombreLargo: 'Telefon&#237;a Fija', nombreCorto: 'Fija', tipo: 'movil' },
+    { id: 7, nombreLargo: 'Post-Venta', nombreCorto: 'Post-Venta', tipo: 'movil' },
+    { id: 8, nombreLargo: 'Reclamo', nombreCorto: 'Reclamo', tipo: 'movil' },
+    { id: 9, nombreLargo: 'Postpago Migracion M4', nombreCorto: 'Mig M4', tipo: 'movil' },
+    { id: 10, nombreLargo: 'Postpago Portabilidad Migraci&#243;n M4 (Or. Prepago)', nombreCorto: 'Mig M4 - Pre', tipo: 'movil' },
+    { id: 11, nombreLargo: 'CAPL', nombreCorto: 'CAPL', tipo: 'movil' },
+    { id: 12, nombreLargo: 'Postpago Portabilidad ( Origen Postpago )', nombreCorto: 'Porta Post', tipo: 'movil' },
+    { id: 13, nombreLargo: 'Detalle de llamadas', nombreCorto: 'Detalle', tipo: 'movil' },
+    { id: 14, nombreLargo: 'Postpago Portabilidad ( Origen Prepago )', nombreCorto: 'Porta Pre', tipo: 'movil' },
+    { id: 15, nombreLargo: 'Prepago Migracion M7', nombreCorto: 'Prepago M7', tipo: 'movil' },
+    { id: 16, nombreLargo: 'Migracion de Prepago a Postpago', nombreCorto: 'Pre a Post', tipo: 'movil' },
+    { id: 17, nombreLargo: 'Cesion de Linea', nombreCorto: 'Cesion de Linea', tipo: 'movil' },
+    { id: 18, nombreLargo: 'Retiro de Bandit', nombreCorto: 'Retiro de Bandit', tipo: 'movil' },
+    { id: 19, nombreLargo: 'DOA', nombreCorto: 'DOA', tipo: 'movil' },
+    { id: 20, nombreLargo: 'Prepago Renueva', nombreCorto: 'CAEQ Pre', tipo: 'movil' },
+    { id: 21, nombreLargo: 'NAKED ', nombreCorto: 'NAKED', tipo: 'fija' },
+    { id: 22, nombreLargo: 'DUO BA', nombreCorto: 'DUO BA', tipo: 'fija' },
+    { id: 23, nombreLargo: 'DUO BA+TV', nombreCorto: 'DUO BA+TV', tipo: 'fija' },
+    { id: 24, nombreLargo: 'TRIO', nombreCorto: 'TRIO', tipo: 'fija' },
 ];
 
-let operacionesSumatorias = ['Postpago Renueva por Fidelizaci&#243;n', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', 'Postpago Migracion M4', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Prepago)', 'Postpago Portabilidad ( Origen Postpago )', 'Migracion de Prepago a Postpago'];
+let operacionesSumatorias = ['Postpago Renueva por Fidelizaci&#243;n', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Postpago)', 'Postpago Migracion M4', 'Postpago Portabilidad Migraci&#243;n M4 (Or. Prepago)', 'Postpago Portabilidad ( Origen Postpago )', 'Migracion de Prepago a Postpago', 'NAKED ', 'DUO BA', 'DUO BA+TV', 'TRIO'];
 
 let oportunidadesTotales;
 let oportunidadesEfectivas;
@@ -55,9 +55,6 @@ function upload() {
         excelAlohaFileToJSON(alohaFile[0]);
         excelControlNetMovilFileToJSON(controlNetMovilFile[0]);
         excelControlNetFijaFileToJSON(controlNetFijaFile[0]);
-
-        document.querySelector('.files').classList.add('hidden');
-        document.querySelector('.generalOperations').classList.remove('hidden');
 
         setTimeout(function () {
             // Cantidad de Oportunidades por Asesor
@@ -82,17 +79,6 @@ function upload() {
                     return asesores.find(a => a.id === id)
                 })
 
-            // Operaciones
-            // controlNetMovilArray.forEach(elemento => {
-            //     operaciones.push(elemento['Operaci&#243;n']);
-            // })
-            // controlNetFijaArray.forEach(elemento => {
-            //     operaciones.push(elemento['Tipo Operacion']);
-            // })
-            // operaciones = [...new Set(operaciones)];
-            // operaciones.sort()
-
-
             // Normalizar ArrayFija
             controlNetFijaArray.forEach(elemento => {
                 elemento['Operaci&#243;n'] = elemento['Tipo Operacion'];
@@ -106,13 +92,16 @@ function upload() {
             let filterOpHtml = '';
 
             operaciones.forEach(operacion => {
+                let checked = '';
+                let busqueda = operacionesSumatorias.some(operacionS => operacionS == operacion.nombreLargo);
+                if (busqueda) {
+                    checked = `checked`;
+                }
                 // operationsHtml += `<button class="buttonOperation" onclick="filterOperations('${n}')">${operacionName}</button>`;
-                filterOpHtml += `<label for="${operacion.nombreLargo}"><input id="${operacion.nombreLargo}" type="checkbox" value="${operacion.id}" checked/><a class="aButton" href="#" onclick="filterOperations('${n}')">${operacion.nombreCorto}</a></label>`;
+                filterOpHtml += `<label for="${operacion.nombreLargo}"><input id="${operacion.nombreLargo}" type="checkbox" value="${operacion.id}" ${checked}/><a class="aButton" href="#" onclick="filterOperations('${n}')">${operacion.nombreCorto}</a></label>`;
                 n++;
             })
-            // console.log(operaciones);
             document.querySelector('.options').innerHTML = filterOpHtml;
-            // document.querySelector('.operations').innerHTML = operationsHtml;
 
             // ------------------------------------------------------
 
@@ -126,19 +115,23 @@ function upload() {
                     operaciones[operacion.nombreLargo] = controlNetArray.filter(obj => obj['Operaci&#243;n'] == operacion.nombreLargo && obj['C&#243;digo FFVV'] == asesor.id);
                     asesor.operaciones[operacion.nombreLargo] = operaciones[operacion.nombreLargo].reduce((cnt, cur) => (cnt[cur['C&#243;digo FFVV']] = cnt[cur['C&#243;digo FFVV']] + 1 || 1, cnt), {})[asesor.id] || 0;
                 })
-                let sumatoria = 0;
-                operacionesSumatorias.forEach(operacion => {
-                    sumatoria += asesor.operaciones[operacion] || 0;
+                let sumatoriaMovil = 0;
+                let sumatoriaFija = 0;
+                operacionesSumatorias.forEach(operacionS => {
+                    if (operaciones.find(operacion => operacion.nombreLargo === operacionS).tipo == 'movil') {
+                        sumatoriaMovil += asesor.operaciones[operacionS] || 0;
+                    } else if (operaciones.find(operacion => operacion.nombreLargo === operacionS).tipo == 'fija') {
+                        sumatoriaFija += asesor.operaciones[operacionS] || 0;
+                    }
                 })
-                asesor.movilesTotales = sumatoria;
-                operacionesSumatorias = ['NAKED ', 'DUO BA', 'DUO BA+TV', 'TRIO'];
-                sumatoria = 0;
-                operacionesSumatorias.forEach(operacion => {
-                    sumatoria += asesor.operaciones[operacion] || 0;
-                })
-                asesor.fijasTotales = sumatoria;
-                // filterVentas();
+                asesor.movilesTotales = sumatoriaMovil;
+                asesor.fijasTotales = sumatoriaFija;
             });
+
+            // Aparecer objetos al cargar
+            document.querySelector('.files').classList.add('hidden');
+            document.querySelector('.generalOperations').classList.remove('hidden');
+            document.querySelector('.inputBusqueda').classList.remove('hidden');
         }, 500)
     } else {
         alert("Por favor selecciona archivos Excel válidos.");
@@ -217,6 +210,29 @@ function excelControlNetFijaFileToJSON(file) {
     }
 }
 
+// Funcion de busqueda
+let inputBusqueda = document.getElementById('iSearch');
+inputBusqueda.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        // e.preventDefault();
+        let allTH = document.querySelectorAll('.row');
+        findElement(allTH)
+        let allH3 = document.querySelectorAll('h3');
+        findElement(allH3)
+
+        function findElement(data) {
+            data.forEach(element => {
+                if (element.textContent.search(inputBusqueda.value.toUpperCase()) >= 0) {
+                    element.style = 'color: red';
+                }
+            })
+        }
+    }
+})
+// function searchText(){
+
+// }
+
 // Funcion de colores
 function perc2color(perc) {
     var r, g, b = 0;
@@ -235,7 +251,6 @@ function perc2color(perc) {
 // Funcion de filtro
 function filterOperations(filter) {
     filter = operaciones[filter].nombreLargo;
-    console.log(filter)
     let graphHtml = '';
     asesores.sort((a, b) => (b.operaciones[filter] > a.operaciones[filter]) ? 1 : ((a.operaciones[filter] > b.operaciones[filter]) ? -1 : 0))
     let paletaColores = asesores.map(obj => obj.operaciones[filter]);
@@ -243,7 +258,6 @@ function filterOperations(filter) {
     let graph100percent = asesores[0].operaciones[filter];
     asesores.forEach((asesor) => {
         let efectivePercent = Math.round((asesor.operaciones[filter] * 100) / graph100percent);
-        // console.log(efectivePercent);
         graphHtml += `<div class="item">
     <div class="bar__container">
         <h3 class="h3">${asesor.nombre}</h3>
@@ -267,53 +281,72 @@ function filterOperations(filter) {
     document.querySelector('.graphs').classList.remove('hidden');
 }
 
-document.querySelector(".filterButton").addEventListener("click", function(event){
+document.querySelector(".filterButton").addEventListener("click", function (event) {
     event.preventDefault();
-    filterVentas('a',true)
-  });
+    filterVentas('a', true)
+});
 
 function filterVentas(type, filtered) {
     document.querySelector('.filter').classList.add('hidden');
     let graphHtml = '';
     if (type === 'm') {
         filter = 'movilesTotales';
+        document.querySelector('.graphs').classList.add('graphsMode');
+
         drawObjectsFromFilter('m')
     } else if (type === 'f') {
         filter = 'fijasTotales';
+        document.querySelector('.graphs').classList.add('graphsMode');
+
         drawObjectsFromFilter('f')
     } else if (type === 'a') {
-    document.querySelector('.filter').classList.remove('hidden');
+        document.querySelector('.graphs').classList.remove('graphsMode');
+
+        document.querySelector('.filter').classList.remove('hidden');
         let operacionesFiltradas = [];
         if (filtered === true) {
             let filterOptions = document.querySelector('.options');
             let optCheckeds = filterOptions.getElementsByTagName('input');
             for (let i = 0; i < optCheckeds.length; i++) {
                 if (optCheckeds[i].checked) {
-                    operacionesFiltradas.push(operaciones[optCheckeds[i].value-1]);
+                    operacionesFiltradas.push(operaciones[optCheckeds[i].value - 1]);
                 }
             }
         } else {
             operacionesFiltradas = operaciones;
         }
-        console.log(operacionesFiltradas);
         graphHtml += `<table style="text-align: center;">
         <thead>
         <tr>
             <th class="col" colspan=1></th>
-            <th class="col" colspan=${operacionesFiltradas.length}>Ventas Totales</th>
+            <th class="col" colspan=${operacionesFiltradas.length + 2}>Ventas Totales</th>
         </tr>
         <tr class="opHeader"><th class="col">Nombre</th>`
-        operacionesFiltradas.forEach(operacion => {
-            graphHtml += `<th class="col">${operacion.nombreCorto}</th>`
+        operacionesFiltradas.forEach(operacionf => {
+            graphHtml += `<th class="col">${operacionf.nombreCorto}</th>`
         })
+        graphHtml += `<th class="col" style="background-color: #ccc; border-bottom: 1px solid #ccc;">Total Móviles</th>`
+        graphHtml += `<th class="col" style="background-color: #ccc; border-bottom: 1px solid #ccc;">Total Fija</th>`
         graphHtml += `</tr></thead><tbody>`
         getOptionsFiltered(operacionesFiltradas)
         function getOptionsFiltered(listOperations) {
             asesores.forEach(asesor => {
+                let acumuladorMovil = 0;
+                let acumuladorFija = 0;
                 graphHtml += `<tr><th class="row"><div class=""></div>${asesor.nombre}</th>`;
-                listOperations.forEach(operacion => {
-                    graphHtml += `<td>${asesor.operaciones[operacion.nombreLargo] || 0}</td>`
+                listOperations.forEach(loperacion => {
+                    graphHtml += `<td>${asesor.operaciones[loperacion.nombreLargo] || 0}</td>`
+                    let operacionEncontrada = operaciones.find(operacion => operacion.nombreLargo === loperacion.nombreLargo)['tipo']
+                    if (operacionEncontrada === 'movil') {
+                        acumuladorMovil += asesor.operaciones[loperacion.nombreLargo] || 0;
+                    } else if (operacionEncontrada === 'fija') {
+                        acumuladorFija += asesor.operaciones[loperacion.nombreLargo] || 0;
+                    };
                 })
+                graphHtml += `<td style="background-color: #ccc; border-bottom: 1px solid #ccc;">${acumuladorMovil || 0}</td>`
+                asesor.movilesTotales = acumuladorMovil || 0;
+                graphHtml += `<td style="background-color: #ccc; border-bottom: 1px solid #ccc;">${acumuladorFija || 0}</td>`
+                asesor.fijaTotales = acumuladorFija || 0;
                 return graphHtml += `<tr></tbody>`
             })
         }
@@ -349,4 +382,5 @@ function filterVentas(type, filtered) {
     }
     document.querySelector('.graphs').innerHTML = graphHtml;
     document.querySelector('.graphs').classList.remove('hidden');
+
 }

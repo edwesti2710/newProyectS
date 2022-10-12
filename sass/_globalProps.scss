@@ -26,3 +26,17 @@ img {
 .hidden {
     display: none !important;
 }
+.graphsMode {
+    width: 50% !important;
+}
+
+.button {
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 1px 1px 5px #000;
+    cursor: pointer;
+    &:focus{
+        background-color: #ddd;
+    }
+}

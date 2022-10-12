@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/styles/index.css">
+  <!-- Fork Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+
   <title>SICSystem - Huancayo</title>
 </head>
 
@@ -31,13 +34,19 @@
       <button onclick="upload()">Cargar Archivos</button>
     </div>
     <div class="generalOperations hidden">
-      <button class="buttonGeneralOperations" onclick="filterVentas('a', false)">Detallado Ventas</button>
-      <button class="buttonGeneralOperations" onclick="filterVentas('m', false)">Ventas Móviles</button>
-      <button class="buttonGeneralOperations" onclick="filterVentas('f', false)">Ventas Fijas</button>
+      <button class="buttonGeneralOperations button" onclick="filterVentas('a', false)">Detallado Ventas</button>
+      <button class="buttonGeneralOperations button" onclick="filterVentas('m', false)">Ventas Móviles</button>
+      <button class="buttonGeneralOperations button" onclick="filterVentas('f', false)">Ventas Fijas</button>
 
     </div>
-    <div class="operations">
-
+    <div class="tools">
+      <!-- <select>
+      <option value="1">1</option>
+      </select> -->
+      <div class="inputBusqueda hidden">
+        <input type="search" name="iSearch" id="iSearch" placeholder="Buscar">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </div>
     </div>
   </header>
   <main>
@@ -47,10 +56,11 @@
       <input id="filterOp2" type="checkbox" value="1" /><label for="filterOp2">Operacion</label>
       <input id="filterOp3" type="checkbox" value="1" /><label for="filterOp3">Operacion</label> -->
       </div>
-      <button class="filterButton">Filtrar</button>
+      <button class="filterButton button">Filtrar</button>
     </form>
 
     <div class="graphs hidden">
+      
     </div>
   </main>
   <footer>

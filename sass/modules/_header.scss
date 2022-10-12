@@ -19,16 +19,29 @@ header {
             // background-color: red;
         }
     }
-
-    .operations {
+    .generalOperations{
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: .5rem;
-        button {
-            // width: 100%;
-            padding: .5rem;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    .tools{
+        display: flex;
+        justify-content: flex-end;
+        .inputBusqueda {
+            background-color: white;
+            padding: .5rem 1rem;
+            border-radius: 1rem;
+            input {
+                border: none;
+                outline: none;
+            }
+            i {
+                // background-color: red;
+                font-size: 1.5rem;
+                color: #ccc;
+                font-weight: 900;
+            }
         }
     }
 }
