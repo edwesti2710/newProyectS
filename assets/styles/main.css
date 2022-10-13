@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+body {
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.graphsMode {
+  width: 50% !important;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: 1px 1px 5px #000;
+  cursor: pointer;
+}
+.button:focus {
+  background-color: #ddd;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.header {
+  box-shadow: 0px 5px 10px #000;
+}
+.header__topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__topbar .logo {
+  height: 10rem;
+}
+.header__topbar .logo img {
+  width: 100%;
+  height: 100%;
+}
+.header__topbar ul {
+  display: flex;
+  justify-content: space-between;
+  min-width: 30%;
+  list-style: none;
+  gap: 10px;
+}
+.header__topbar ul li a {
+  background-color: #79B4B7;
+  display: inline-block;
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  color: #FEFBF3;
+  text-decoration: none;
+  padding: 10px 30px;
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+.header__topbar ul li a:hover {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+}
+.root .portabilidad {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.root .portabilidad iframe {
+  width: 100%;
+  height: 100%;
+}
+.root .portabilidad iframe:nth-child(2) {
+  overflow: hidden;
+}
+
+.footer .bottomBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+}
+.footer .bottomBar .social {
+  min-width: 5%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.footer .bottomBar .social a {
+  color: #000;
+}
+
+/*# sourceMappingURL=main.css.map */

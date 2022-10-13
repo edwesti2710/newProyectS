@@ -1,75 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/styles/index.css">
-  <!-- Fork Awesome -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fork Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
 
-  <title>SICSystem - Huancayo</title>
+    <link rel="stylesheet" href="./assets/styles/main.css">
+    <title>SIC Test System</title>
 </head>
-
 <body>
-  <header>
-    <div class="files">
-      <form class="filesLoader">
-        <div class="aloha">
-          <!-- Aloha -->
-          <label for="alohaFile">Aloha:<input type="file" id="aloha_file_upload" /></label>
+    <header class="header">
+        <div class="header__topbar container">
+            <div class="logo">
+                <img src="./assets/img/sicLogo.svg" alt="sic logo">
+            </div>
+            <ul>
+                <li><a class="btnInicio" href="#">Inicio</a></li>
+                <li><a class="btnAnalitica" href="./stats.html">Analítica</a></li>
+                <li><a class="btnPortabilidad" href="./index.html#main">Portabilidad</a></li>
+                <li><a class="btnDispositivos" href="./index.html#main">Dispositivos</a></li>
+            </ul>
         </div>
-        <div class="controlNetMoviles">
-          <!-- ControlNet Movil -->
-          <label for="controlNetMovilFile">ControlNet (Moviles):<input type="file" name="controlNetMovilFile"
-              id="controlNetMovil_file_upload" /></label>
+    </header>
+    <main>
+        <div id="main" class="root">
+            <div class="portabilidad">
+                <iframe src="https://aplicaciones.claro.com.pe/ClienteLineasWeb/consultar.htm" frameborder="0" sandbox="allow-same-origin allow-scripts allow-forms" scrolling="no"></iframe>
+                <iframe src="https://mi.entel.pe/portal/server.pt?&uuID={8650ACC7-3803-625E-B1C8-86A46A111000}&parentname=CommunityPage&parentid=113&mode=2&in_hi_userid=200&cached=false" frameborder="0" sandbox="allow-same-origin allow-scripts allow-forms" scrolling="no"></iframe>
+                <iframe src="https://portal.bitel.com.pe/asistencia/consulta-linea" frameborder="0" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
+            </div>
+            <!-- <h1>Plataforma en construcción</h1> -->
         </div>
-        <div class="controlNetFija">
-          <!-- ControlNet Fija -->
-          <label for="controlNetFijaFile">ControlNet (Fija):<input type="file" name="controlNetFijaFile"
-              id="controlNetFija_file_upload" /></label>
+    </main>
+    <!-- <footer class="footer">
+        <div class="bottomBar container">
+            <div class="generalInformation">
+                Todos los derechos reservados.
+            </div>
+            <div class="social">
+                <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </div>
         </div>
-      </form>
-      <button onclick="upload()">Cargar Archivos</button>
-    </div>
-    <div class="generalOperations hidden">
-      <button class="buttonGeneralOperations button" onclick="filterVentas('a', false)">Detallado Ventas</button>
-      <button class="buttonGeneralOperations button" onclick="filterVentas('m', false)">Ventas Móviles</button>
-      <button class="buttonGeneralOperations button" onclick="filterVentas('f', false)">Ventas Fijas</button>
-
-    </div>
-    <div class="tools">
-      <!-- <select>
-      <option value="1">1</option>
-      </select> -->
-      <div class="inputBusqueda hidden">
-        <input type="search" name="iSearch" id="iSearch" placeholder="Buscar">
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </div>
-    </div>
-  </header>
-  <main>
-    <form class="filter hidden" action="">
-      <div class="options">
-        <!-- <label for="filterOp"><input id="filterOp" type="checkbox" value="1" />Operacion</label>
-      <input id="filterOp2" type="checkbox" value="1" /><label for="filterOp2">Operacion</label>
-      <input id="filterOp3" type="checkbox" value="1" /><label for="filterOp3">Operacion</label> -->
-      </div>
-      <button class="filterButton button">Filtrar</button>
-    </form>
-
-    <div class="graphs hidden">
-      
-    </div>
-  </main>
-  <footer>
-
-  </footer>
-
-  <!-- Js dependencias -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.min.js"></script>
-  <script src="./assets/js/index.js"></script>
+    </footer> -->
+    <script src="./assets/js/main.js"></script>
 </body>
-
 </html>

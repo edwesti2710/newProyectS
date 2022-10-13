@@ -1,8 +1,12 @@
 @import './variables';
 @import './globalProps';
 
-@import './modules/header';
-@import './modules/main';
-@import './modules/footer';
+// @import './modules/header';
+// @import './modules/main';
+// @import './modules/footer';
 
 // @import './modules/pages/template'
+
+@import './modules/main/header';
+@import './modules/main/main';
+@import './modules/main/footer'
