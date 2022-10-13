@@ -1,0 +1,25 @@
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 20px;
+}
+.card {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* border: 1px solid black; */
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #000;
+}
