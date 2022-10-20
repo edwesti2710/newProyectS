@@ -1,14 +1,4 @@
-// Colores
-$color0 : #fff;
-$color1 : #FEFBF3;
-$color2 : #ccc;
-$color3 : #F8F0DF;
-$color4 : #79B4B7;
-$color5 : #9D9D9D;
-$color6 : #000;
-
-
-* {
+*, *::after, *::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -26,6 +16,7 @@ body {
 
 img {
     display: block;
+    width: 100%;
 }
 
 .container {

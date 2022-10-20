@@ -1,20 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="./assets/styles/devices.css">
     <title>SIC Dispositivos</title>
 </head>
+
 <body>
-    <main>
-        <div class="search">
-            <input id="iSearch" type="text">
+    <header class="header">
+        <div class="header__topbar container">
+            <div class="logo">
+                <img src="./assets/img/sicLogo.svg" alt="sic logo">
+            </div>
+            <div class="search">
+                <input id="iSearch" type="search" placeholder="Buscar dispositivo...">
+            </div>
         </div>
-        <div class="content">
-        </div>
+    </header>
+    <main class="main">
+        <div class="wrapper">
+            <div class="lds-ellipsis hidden">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="items hidden">
+                <div class="item">
+                    <div class="imgContainer">
+                        <div class="backImg">
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s22-ultra-5g.jpg" alt=""
+                                srcset="">
+                        </div>
+                    </div>
+                    <div class="cardContent">
+                        <h1>Heading1</h1>
+                        <div class="cardButtons">
+                            <button class="itemButton buttonVer" title="Ver"><i
+                                    class="fa-solid fa-eye"></i></i></button>
+                            <button class="itemButton" id="buttonComparar" title="Comparar"><i
+                                    class="fa-solid fa-scale-balanced"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="itemModal hidden">
+                <div class="item">
+                    <div class="imgContainer">
+                        <div class="backImg">
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s22-ultra-5g.jpg" alt=""
+                                srcset="">
+                        </div>
+                    </div>
+                    <div class="cardContent">
+                        <h2>Samsung Galaxy a23 5G LTE</h2>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><h3>Lanzamiento</h3></td>
+                                    <td>2022, January 26</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Tamaño</h3></td>
+                                    <td>159.9 x 73.9 x 8.1 mm (6.30 x 2.91 x 0.32 in)</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Red</h3></td>
+                                    <td>GSM / HSPA / LTE</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>SIM</h3></td>
+                                    <td>Single SIM (Nano-SIM) or Hybrid Dual SIM (Nano-SIM, dual stand-by)</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>CPU</h3></td>
+                                    <td>Octa-core (1x2.4 GHz Cortex-A78 & 3x2.2 GHz Cortex-A78 & 4x1.9 GHz Cortex-A55)</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Chipset</h3></td>
+                                    <td>Qualcomm SM7325 Snapdragon 778G 5G (6 nm)</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Almacenamiento</h3></td>
+                                    <td>128GB 4GB RAM, 128GB 6GB RAM, 128GB 8GB RAM, 256GB 6GB RAM, 256GB 8GB RAM</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Pantalla</h3></td>
+                                    <td>GSM / HSPA / LTE</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Sistema Operativo</h3></td>
+                                    <td>Android 11, upgradable to Android 12, One UI 4.1</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Cámara Frontal</h3></td>
+                                    <td>32 MP, f/2.2, 26mm (wide), 1/2.8", 0.8µm</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Camara Principal</h3></td>
+                                    <td>64 MP, f/1.8, 26mm (wide), 1/1.7\", 0.8µm, PDAF, OIS\n12 MP, f/2.2, 123˚ (ultrawide), 1.12µm\n5 MP, f/2.4, (macro)\n5 MP, f/2.4, (depth)</td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Bateria</h3></td>
+                                    <td>Li-Ion 4500 mAh, non-removable</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="buttonCloseModal"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
     </main>
     <script src="./assets/js/devices.js"></script>
 </body>
+
 </html>
