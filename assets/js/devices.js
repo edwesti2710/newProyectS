@@ -1,11 +1,14 @@
 let inputBusqueda = document.getElementById('iSearch');
 let itemsLoader = document.querySelector('.lds-ellipsis');
 let items = document.querySelector('.items');
+let itemModal = document.querySelector('.itemModal');
+
 let myDevices = [];
 
 inputBusqueda.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
         let device = encodeURI(inputBusqueda.value)
+        closeModal();
         getData();
         async function getData() {
             itemsLoader.classList.remove('hidden');
@@ -54,73 +57,74 @@ inputBusqueda.addEventListener('keydown', function (e) {
 async function getDeviceData(proceso, device_url) {
     const dataApi = await fetch(`https://sicsystem-devices.cyclic.app/device/${device_url}`);
     const dataJson = await dataApi.json();
-    let itemModal = document.querySelector('.itemModal');
     let htmlData = '';
+    console.log(dataJson);
     if (proceso == 'ver') {
         htmlData += `<div class="item">
         <div class="imgContainer">
             <div class="backImg">
-                <img src="${dataJson.img}" alt=""
-                    srcset="">
+                <img src="${dataJson.img}" alt="${dataJson.title}">
             </div>
         </div>
         <div class="cardContent">
-            <h2>Samsung Galaxy a23 5G LTE</h2>
+            <h2>${dataJson.title}</h2>
             <table>
                 <tbody>
                     <tr>
                         <td><h3>Lanzamiento</h3></td>
-                        <td>2022, January 26</td>
+                        <td>${dataJson.spec_detail[1].specs[0].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>Tamaño</h3></td>
-                        <td>159.9 x 73.9 x 8.1 mm (6.30 x 2.91 x 0.32 in)</td>
+                        <td>${dataJson.spec_detail[2].specs[0].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>Red</h3></td>
-                        <td>GSM / HSPA / LTE</td>
+                        <td>${dataJson.spec_detail[0].specs[0].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>SIM</h3></td>
-                        <td>Single SIM (Nano-SIM) or Hybrid Dual SIM (Nano-SIM, dual stand-by)</td>
+                        <td>${dataJson.spec_detail[2].specs[3].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>CPU</h3></td>
-                        <td>Octa-core (1x2.4 GHz Cortex-A78 & 3x2.2 GHz Cortex-A78 & 4x1.9 GHz Cortex-A55)</td>
+                        <td>${dataJson.spec_detail[4].specs[2].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>Chipset</h3></td>
-                        <td>Qualcomm SM7325 Snapdragon 778G 5G (6 nm)</td>
+                        <td>${dataJson.spec_detail[4].specs[1].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>Almacenamiento</h3></td>
-                        <td>128GB 4GB RAM, 128GB 6GB RAM, 128GB 8GB RAM, 256GB 6GB RAM, 256GB 8GB RAM</td>
+                        <td>${dataJson.spec_detail[5].specs[1].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>Pantalla</h3></td>
-                        <td>GSM / HSPA / LTE</td>
+                        <td>${dataJson.spec_detail[3].specs[2].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>Sistema Operativo</h3></td>
-                        <td>Android 11, upgradable to Android 12, One UI 4.1</td>
+                        <td>${dataJson.spec_detail[4].specs[0].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>Cámara Frontal</h3></td>
-                        <td>32 MP, f/2.2, 26mm (wide), 1/2.8", 0.8µm</td>
+                        <td>${dataJson.spec_detail[7].specs[0].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>Camara Principal</h3></td>
-                        <td>64 MP, f/1.8, 26mm (wide), 1/1.7\", 0.8µm, PDAF, OIS\n12 MP, f/2.2, 123˚ (ultrawide), 1.12µm\n5 MP, f/2.4, (macro)\n5 MP, f/2.4, (depth)</td>
+                        <td>${dataJson.spec_detail[6].specs[0].name||''} - ${dataJson.spec_detail[6].specs[0].value||''}</td>
                     </tr>
                     <tr>
                         <td><h3>Bateria</h3></td>
-                        <td>Li-Ion 4500 mAh, non-removable</td>
+                        <td>${dataJson.spec_detail[11].specs[0].value||''}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <button class="buttonCloseModal"><i class="fa-solid fa-xmark"></i></button>
+        <button class="buttonCloseModal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
     </div>`
+    itemModal.innerHTML = htmlData;
+    itemModal.classList.remove('hidden');
     } else if (proceso == 'comparar') {
 
     }
@@ -168,4 +172,8 @@ function slider() {
         slider.addEventListener('touchend', end);
     })();
 
+}
+
+function closeModal() {
+    itemModal.classList.add('hidden');
 }
