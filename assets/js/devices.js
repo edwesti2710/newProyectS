@@ -58,7 +58,6 @@ async function getDeviceData(proceso, device_url) {
     const dataApi = await fetch(`https://sicsystem-devices.cyclic.app/device/${device_url}`);
     const dataJson = await dataApi.json();
     let htmlData = '';
-    console.log(dataJson);
     if (proceso == 'ver') {
         htmlData += `<div class="item">
         <div class="imgContainer">
