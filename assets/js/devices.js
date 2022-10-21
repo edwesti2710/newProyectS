@@ -82,10 +82,6 @@ async function getDeviceData(proceso, device_url) {
                         <td>${dataJson.spec_detail[0].specs[0].value||''}</td>
                     </tr>
                     <tr>
-                        <td><h3>SIM</h3></td>
-                        <td>${dataJson.spec_detail[2].specs[3].value||''}</td>
-                    </tr>
-                    <tr>
                         <td><h3>CPU</h3></td>
                         <td>${dataJson.spec_detail[4].specs[2].value||''}</td>
                     </tr>
